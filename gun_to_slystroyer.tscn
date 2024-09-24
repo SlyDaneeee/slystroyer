@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://u2urpdv6haat"]
+
+[ext_resource type="PackedScene" uid="uid://cfpp44oruwik5" path="res://models/Gun_to_slystroyer.glb" id="1_ca6x3"]
+
+[sub_resource type="Animation" id="Animation_w55kb"]
+resource_name = "shoot"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.02, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3, 6.5), Vector3(0, 3, 7), Vector3(0, 3, 6.1), Vector3(0, 3, 6.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h5qc8"]
+_data = {
+"shoot": SubResource("Animation_w55kb")
+}
+
+[node name="Gun_to_slystroyer" instance=ExtResource("1_ca6x3")]
+
+[node name="Cone" parent="." index="0"]
+transform = Transform3D(-0.273364, 2.38982e-08, 1.04463e-15, 0, -1.19491e-08, 0.273364, 2.38982e-08, 0.273364, 1.19491e-08, 0, 3, 6.5)
+cast_shadow = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_h5qc8")
+}
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00297034, 2.99199, 6.17643)
+target_position = Vector3(0, 0, -1)

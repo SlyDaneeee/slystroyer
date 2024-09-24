@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://db2ww03sckkvp"]
+
+[ext_resource type="Script" path="res://back_button.gd" id="1_wog1p"]
+
+[node name="controls_meny" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 3.0
+offset_right = 851.0
+offset_bottom = 638.0
+theme_override_colors/font_color = Color(0.811765, 0.67451, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.945098, 0.231373, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = -2
+theme_override_font_sizes/font_size = 40
+text = "move = W A S D
+run = CTRL
+jump = SPACE
+shoot = left mouse button
+switch to weapon one = \"1\" key
+switch to weapon two = \"2\" key
+open pause menu = ESC
+score shows how many times you
+shoot an enemy.
+health shows how many lives you have.
+if it reaches zero then you die"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 881.0
+offset_top = 479.0
+offset_right = 1116.0
+offset_bottom = 624.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="back_button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "back"
+script = ExtResource("1_wog1p")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/back_button" to="MarginContainer/VBoxContainer/back_button" method="_on_pressed"]

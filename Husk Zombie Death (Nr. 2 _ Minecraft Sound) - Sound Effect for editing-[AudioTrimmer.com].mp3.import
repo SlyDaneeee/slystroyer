@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c3xcynv5hn770"
+path="res://.godot/imported/Husk Zombie Death (Nr. 2 _ Minecraft Sound) - Sound Effect for editing-[AudioTrimmer.com].mp3-f260488b2906068aa2d8be07fd2aba41.mp3str"
+
+[deps]
+
+source_file="res://Husk Zombie Death (Nr. 2 _ Minecraft Sound) - Sound Effect for editing-[AudioTrimmer.com].mp3"
+dest_files=["res://.godot/imported/Husk Zombie Death (Nr. 2 _ Minecraft Sound) - Sound Effect for editing-[AudioTrimmer.com].mp3-f260488b2906068aa2d8be07fd2aba41.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

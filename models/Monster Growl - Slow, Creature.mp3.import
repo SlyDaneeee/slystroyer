@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dblk53wygxdtc"
+path="res://.godot/imported/Monster Growl - Slow, Creature.mp3-201999833a1722221e1a27d858c29265.mp3str"
+
+[deps]
+
+source_file="res://models/Monster Growl - Slow, Creature.mp3"
+dest_files=["res://.godot/imported/Monster Growl - Slow, Creature.mp3-201999833a1722221e1a27d858c29265.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

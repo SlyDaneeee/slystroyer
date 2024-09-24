@@ -1,0 +1,227 @@
+[gd_scene load_steps=25 format=3 uid="uid://bwyo1q6awar06"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_8084b"]
+[ext_resource type="Script" path="res://MeshInstance3D.gd" id="2_rb1lc"]
+[ext_resource type="Script" path="res://CollisionShape3D.gd" id="3_vjkq8"]
+[ext_resource type="Script" path="res://Head.gd" id="4_jmqel"]
+[ext_resource type="Script" path="res://Camera3D.gd" id="5_l8yn5"]
+[ext_resource type="PackedScene" uid="uid://cfpp44oruwik5" path="res://models/Gun_to_slystroyer.glb" id="6_jf0af"]
+[ext_resource type="AudioStream" uid="uid://bf3dakfc0ft3d" path="res://models/LaserLyd.mp3" id="7_4kg2d"]
+[ext_resource type="PackedScene" uid="uid://cif6spafgkvb7" path="res://models/shotgun_to_slystroyer.glb" id="7_bw3fc"]
+[ext_resource type="AudioStream" uid="uid://c5ofmggk0vaf0" path="res://models/shotgun-sound-effects-2_DLodUTB8.mp3" id="9_bing5"]
+[ext_resource type="AudioStream" uid="uid://bn6l884vtcb5p" path="res://models/shotgun-sound-effects-2_UHCis5fN.mp3" id="10_2jvdy"]
+[ext_resource type="AudioStream" uid="uid://d06qij14foih3" path="res://models/Monster Bite  _ Sound Effect.mp3" id="11_quckk"]
+[ext_resource type="AudioStream" uid="uid://brfs22wxfbvrq" path="res://game over sound.mp3" id="12_ce1wl"]
+[ext_resource type="AudioStream" uid="uid://dp00b03q6dbpm" path="res://mausin.mp3" id="13_4lq0y"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ncvd1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dl3o5"]
+points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
+
+[sub_resource type="Animation" id="Animation_w55kb"]
+resource_name = "shoot"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.02, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3, 6.5), Vector3(0, 3, 7), Vector3(0, 3, 6.1), Vector3(0, 3, 6.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h5qc8"]
+_data = {
+"shoot": SubResource("Animation_w55kb")
+}
+
+[sub_resource type="Animation" id="Animation_67521"]
+resource_name = "shoot"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meshes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.09, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.687, 0, 0), Vector3(1.5, 0, 0), Vector3(1.687, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.09, 0.18),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.349066), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ynqhv"]
+_data = {
+"shoot": SubResource("Animation_67521")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_igqpe"]
+
+[sub_resource type="Animation" id="Animation_3am8s"]
+resource_name = "LowerAuto"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shotgun_to_slystroyer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.499398, -0.0888882, -0.250859), Vector3(0.499, -2, -0.251)]
+}
+
+[sub_resource type="Animation" id="Animation_nkkp2"]
+resource_name = "LowerPistols"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun_to_slystroyer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.487151, -0.272326, -0.475102), Vector3(0.487, -2, -0.475)]
+}
+
+[sub_resource type="Animation" id="Animation_ym83h"]
+resource_name = "dissapear"
+length = 0.01
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shotgun_to_slystroyer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.499, -2, -0.251), Vector3(0.499, -2, -0.251)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kwq4x"]
+_data = {
+"LowerAuto": SubResource("Animation_3am8s"),
+"LowerPistols": SubResource("Animation_nkkp2"),
+"dissapear": SubResource("Animation_ym83h")
+}
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.220178, 8.85694, -0.0727603)
+script = ExtResource("1_8084b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ncvd1")
+script = ExtResource("2_rb1lc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.166721, 0)
+shape = SubResource("ConvexPolygonShape3D_dl3o5")
+script = ExtResource("3_vjkq8")
+
+[node name="Head" type="Node3D" parent="."]
+script = ExtResource("4_jmqel")
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3)
+fov = 138.064
+script = ExtResource("5_l8yn5")
+
+[node name="Gun_to_slystroyer" parent="Head/Camera3D" instance=ExtResource("6_jf0af")]
+transform = Transform3D(-0.0592203, 0, -0.0037445, 0, 0.0593385, 0, 0.0037445, 0, -0.0592203, 0.487151, -0.272326, -0.475102)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/Gun_to_slystroyer"]
+libraries = {
+"": SubResource("AnimationLibrary_h5qc8")
+}
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D/Gun_to_slystroyer"]
+transform = Transform3D(-9.20943, 0, 0.546981, 0, 12.2978, 0, -0.546981, 0, -9.20943, -0.250808, 3.30675, 10.2263)
+target_position = Vector3(0, 0, -1)
+
+[node name="gunshot" type="AudioStreamPlayer3D" parent="Head/Camera3D/Gun_to_slystroyer"]
+transform = Transform3D(-16.8189, 0, 1.06346, 0, 16.8525, 0, -1.06346, 0, -16.8189, -0.419629, 2.52579, 7.75826)
+stream = ExtResource("7_4kg2d")
+max_db = 1.79
+pitch_scale = 1.12
+
+[node name="shotgun_to_slystroyer" parent="Head/Camera3D" instance=ExtResource("7_bw3fc")]
+transform = Transform3D(-9.9338e-09, 0, 0.227259, 0, 0.227259, 0, -0.227259, 0, -9.9338e-09, 0.499398, -1.23078, -0.307325)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/shotgun_to_slystroyer"]
+libraries = {
+"": SubResource("AnimationLibrary_ynqhv")
+}
+
+[node name="Meshes" type="Node3D" parent="Head/Camera3D/shotgun_to_slystroyer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.687, 0, 0)
+
+[node name="barrel" type="Node3D" parent="Head/Camera3D/shotgun_to_slystroyer/Meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.76639, 0, 2.38419e-07)
+
+[node name="shottygun" type="AudioStreamPlayer3D" parent="Head/Camera3D/shotgun_to_slystroyer"]
+stream = ExtResource("9_bing5")
+volume_db = -6.356
+
+[node name="AimRay" type="RayCast3D" parent="Head/Camera3D"]
+transform = Transform3D(9.93763, 0, 0, 0, 9.89742, -1.07044, 0, 0.893073, 11.863, 0, 0, -0.544)
+target_position = Vector3(0, 0, -100)
+collision_mask = 5
+collide_with_areas = true
+
+[node name="PointTester" type="MeshInstance3D" parent="Head/Camera3D/AimRay"]
+transform = Transform3D(0.027925, 0, 0, 0, 0.027925, 0, 0, 0, 1.14349, 0, 0, -0.570245)
+visible = false
+mesh = SubResource("BoxMesh_igqpe")
+skeleton = NodePath("")
+
+[node name="AimRayEnd" type="Node3D" parent="Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 107.696, -1186.71)
+
+[node name="WeaponSwitching" type="AnimationPlayer" parent="Head/Camera3D"]
+libraries = {
+"": SubResource("AnimationLibrary_kwq4x")
+}
+
+[node name="weapon_switching" type="AudioStreamPlayer3D" parent="Head/Camera3D"]
+stream = ExtResource("10_2jvdy")
+
+[node name="biting_yeah" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(3.82225, 0, 5.96046e-08, 0, 3.82225, 0, 0, 0, 3.82225, 0, 0, 0)
+stream = ExtResource("11_quckk")
+
+[node name="game_over_soundi" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(3.82225, 0, 5.96046e-08, 0, 3.82225, 0, 0, 0, 3.82225, 0, 0, 0)
+stream = ExtResource("12_ce1wl")
+
+[node name="clicking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_4lq0y")
